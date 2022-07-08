@@ -1,0 +1,87 @@
+body {
+    background-image: url('../images/republicCity.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+h1 {
+    position: absolute;
+    top: 20px;
+    right: 28%;
+    font-size: 64px;
+}
+
+h2 {
+    position: absolute;
+    top: 250px;
+    right: 25%;
+    font-size: 48px;
+}
+
+#egg {
+   
+    position: absolute;
+    bottom: 5%;
+}
+
+#appaImage {
+    width: 375px;
+    position: absolute;
+    left: 20%;
+    bottom: 6%;
+}
+
+@media only screen and (max-width: 1000px) {
+    #appaImage {
+    position: absolute;
+    left: 10px ;
+    }
+  }
+
+@media only screen and (max-width: 650px) {
+    #appaImage {
+    width:200px
+    }
+  }
+
+#nagaImage {
+    width: 400px;
+    position: absolute;
+    right: 20%;
+    bottom: 10%;
+}
+
+@media only screen and (max-width: 1000px) {
+    #nagaImage {
+    position: absolute;
+    right: 10px
+    }
+  }
+
+  @media only screen and (max-width: 650px) {
+    #nagaImage {
+    width: 200px
+    }
+  }
+
+.appaButton {
+    position: absolute;
+    left: 20%;
+    bottom: 10px;
+    width: 15%;
+    height: 5%
+}
+
+.nagaButton {
+    position: absolute;
+    right: 20%;
+    bottom: 10px;
+    width: 15%;
+    height: 5%
+}
+
+.button {
+    font-size: 500px;
+}
