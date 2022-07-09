@@ -12,6 +12,13 @@ class Tamagotchi {
         this.hunger += 1;
         this.boredom += 1;
         this.sleepiness += 1;
+        document.getElementById('egg').style.animation="shake 1s linear 1"
+        const interval3 = setInterval(function() {
+            document.getElementById('egg').style.animationName = ''
+            document.getElementById('egg').style.animationIterationCount = ''
+            document.getElementById('egg').style.animationDuration = ''
+            document.getElementById('egg').style.animationTimingFunction = ''
+        }, 999);
     }
 
     sleep() {
@@ -22,12 +29,12 @@ class Tamagotchi {
 
     eat() {
         this.hunger -= 2;
-        this.boredom -= 1;
+        this.boredom += 1;
         this.sleepiness += 1;
     }
 
     play() {
-        this.boredom -= 3;
+        this.boredom -= 2;
         this.hunger += 1;
         this.sleepiness += 1;
     }
@@ -111,13 +118,12 @@ const playAppa = () => {
     //Interval scores every second
     const interval1 = setInterval(function() {
         head3.textContent = `NAME: ${appa.name} AGE: ${appa.age} HUNGER: ${appa.hunger} SLEEPINESS: ${appa.sleepiness} BOREDOM: ${appa.boredom}`
-    }, 1000);
+    }, 334);
 
     //Interval every 5 seconds to age up
     const interval2 = setInterval(function() {
         appa.ageUp();
     }, 5000);
-
 
 }
 
