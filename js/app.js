@@ -24,7 +24,7 @@ class Tamagotchi {
     }
 
     sleep() {
-        if (this.sleepiness > 4 && this.boredom > 2 ) {
+        if (this.sleepiness >= 4 && this.boredom >= 2 ) {
         this.sleepiness -= 3;
         this.boredom += 1;
         this.hunger -= 1
@@ -32,7 +32,7 @@ class Tamagotchi {
     }
 
     eat() {
-        if (this.hunger > 4) {
+        if (this.hunger >= 4) {
         this.sleepiness += 1;
         this.boredom -= 1;
         this.hunger -= 3;
@@ -40,7 +40,7 @@ class Tamagotchi {
     }
 
     play() {
-        if(this.boredom > 4) {
+        if(this.boredom >= 4) {
         this.sleepiness -= 1;
         this.boredom -= 3;
         this.hunger += 1;
