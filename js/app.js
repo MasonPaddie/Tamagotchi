@@ -24,21 +24,31 @@ class Tamagotchi {
     }
 
     sleep() {
-        this.sleepiness -= 2;
-        this.boredom -= 1;
-        this.hunger += 1
+        if (this.sleepiness > 4 && this.boredom > 2 ) {
+        this.sleepiness -= 3;
+        this.boredom += 1;
+        this.hunger -= 1
+        }
     }
 
     eat() {
-        this.hunger -= 2;
-        this.boredom += 1;
+        if (this.hunger > 4) {
         this.sleepiness += 1;
+        this.boredom -= 1;
+        this.hunger -= 3;
+        }
     }
 
     play() {
-        this.boredom -= 2;
+        if(this.boredom > 4) {
+        this.sleepiness -= 1;
+        this.boredom -= 3;
         this.hunger += 1;
-        this.sleepiness += 1;
+        }
+    }
+
+    exit() {
+        window.location.reload();
     }
 }
 
@@ -63,7 +73,7 @@ const playAppa = () => {
 
     var head3 = document.createElement("h3");
     document.getElementsByTagName("body")[0].appendChild(head3);
-    head3.textContent = `NAME: ${appa.name} AGE: ${appa.age} HUNGER: ${appa.hunger} SLEEPINESS: ${appa.sleepiness} BOREDOM: ${appa.boredom}`
+    head3.textContent = `NAME: ${appa.name} AGE: ${appa.age} HUNGER: ${appa.hunger} BOREDOM: ${appa.boredom} SLEEPINESS: ${appa.sleepiness}`
     head3.style.position= "absolute"
     head3.style.left = "300px"
     head3.style.fontSize = "20px"
@@ -116,11 +126,19 @@ const playAppa = () => {
     exitButton.style.fontSize = "125px"
     exitButton.style.right = "25%"
     exitButton.style.bottom = "5%"
+    exitButton.addEventListener("click",function() {appa.exit();})
 
-    //Interval scores every second
+    //Interval scores every one-tenth second
     const interval1 = setInterval(function() {
-        head3.textContent = `NAME: ${appa.name} AGE: ${appa.age} HUNGER: ${appa.hunger} SLEEPINESS: ${appa.sleepiness} BOREDOM: ${appa.boredom}`
-    }, 334);
+        head3.textContent = `NAME: ${appa.name} AGE: ${appa.age} HUNGER: ${appa.hunger} BOREDOM: ${appa.boredom} SLEEPINESS: ${appa.sleepiness}`
+
+        //Death conditions
+        if (appa.hunger >= 10 || appa.boredom >= 10 || appa.sleepiness >= 10) {
+            clearInterval(interval1);
+            alert(`${appa.name} has been neglected for too long and went to a better place. Please try again!`)
+            appa.exit()
+        }
+    }, 100);
 
     //Interval every X seconds to age up
     const interval2 = setInterval(function() {
@@ -133,7 +151,7 @@ const playAppa = () => {
             document.getElementById('appaImage').style.animation="runAppa 1s linear infinite"
         }
     }, 2000);
-
+    
 }
 
 const playNaga = () => {
@@ -156,7 +174,7 @@ const playNaga = () => {
 
     var head3 = document.createElement("h3");
     document.getElementsByTagName("body")[0].appendChild(head3);
-    head3.textContent = `NAME: ${naga.name} AGE: ${naga.age} HUNGER: ${naga.hunger} SLEEPINESS: ${naga.sleepiness} BOREDOM: ${naga.boredom}`
+    head3.textContent = `NAME: ${naga.name} AGE: ${naga.age} HUNGER: ${naga.hunger} BOREDOM: ${naga.boredom} SLEEPINESS: ${naga.sleepiness}`
     head3.style.position = "absolute"
     head3.style.right = "260px"
     head3.style.fontSize = "20px"
@@ -209,11 +227,19 @@ const playNaga = () => {
     exitButton.style.fontSize = "125px"
     exitButton.style.left = "25%"
     exitButton.style.bottom = "5%"
+    exitButton.addEventListener("click",function() {naga.exit();})
 
-     //Interval scores every second
+     //Interval scores every one-tenth second
      const interval1 = setInterval(function() {
-        head3.textContent = `NAME: ${naga.name} AGE: ${naga.age} HUNGER: ${naga.hunger} SLEEPINESS: ${naga.sleepiness} BOREDOM: ${naga.boredom}`
-    }, 334);
+        head3.textContent = `NAME: ${naga.name} AGE: ${naga.age} HUNGER: ${naga.hunger} BOREDOM: ${naga.boredom} SLEEPINESS: ${naga.sleepiness}`
+
+        //Death conditions
+        if (naga.hunger >= 10 || naga.boredom >= 10 || naga.sleepiness >= 10) {
+            clearInterval(interval1);
+            alert(`${naga.name} has been neglected for too long and went to a better place. Please try again!`)
+            naga.exit()
+        }
+    }, 100);
     
     //Interval every X seconds to age up
     const interval2 = setInterval(function() {
