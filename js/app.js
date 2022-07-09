@@ -12,6 +12,7 @@ class Tamagotchi {
         this.hunger += 1;
         this.boredom += 1;
         this.sleepiness += 1;
+        if (this.age < 10) {
         document.getElementById('egg').style.animation="shake 1s linear 1"
         const interval3 = setInterval(function() {
             document.getElementById('egg').style.animationName = ''
@@ -19,6 +20,7 @@ class Tamagotchi {
             document.getElementById('egg').style.animationDuration = ''
             document.getElementById('egg').style.animationTimingFunction = ''
         }, 999);
+        }
     }
 
     sleep() {
@@ -43,21 +45,21 @@ class Tamagotchi {
 
 const playAppa = () => {
 
+    //name
+    const name = prompt("What would you like to name your new SkyBison?")
+    appa = new Tamagotchi(name);
+
     //Get rid of excess stuff on screen and leave with egg
     document.getElementsByClassName('head1')[0].style.display = 'none'
     document.getElementsByClassName('head2')[0].style.display = 'none'
     document.getElementsByClassName('nagaButton')[0].style.display = 'none'
     document.getElementsByClassName('appaButton')[0].style.display = 'none'
-    document.getElementById('appaImage').style.display = 'none'
     document.getElementById('nagaImage').style.display = 'none'
+    document.getElementById('appaImage').style.display = 'none'
     eggImage = document.getElementById('egg');
     eggImage.src = "images/egg.png"
     eggImage.style.position = "absolute"
     eggImage.style.left = "15%"
-
-    //name
-    const name = prompt("What would you like to name your new SkyBison?")
-    appa = new Tamagotchi(name);
 
     var head3 = document.createElement("h3");
     document.getElementsByTagName("body")[0].appendChild(head3);
@@ -120,16 +122,25 @@ const playAppa = () => {
         head3.textContent = `NAME: ${appa.name} AGE: ${appa.age} HUNGER: ${appa.hunger} SLEEPINESS: ${appa.sleepiness} BOREDOM: ${appa.boredom}`
     }, 334);
 
-    //Interval every 5 seconds to age up
+    //Interval every X seconds to age up
     const interval2 = setInterval(function() {
         appa.ageUp();
-    }, 5000);
+
+        //Evolve if age reaches 10
+        if (appa.age >= 10) {
+            document.getElementById('appaImage').style.display = 'block'
+            document.getElementById('egg').style.display = 'none'
+            document.getElementById('appaImage').style.animation="runAppa 1s linear infinite"
+        }
+    }, 2000);
 
 }
 
-
-
 const playNaga = () => {
+
+    //name
+    const name = prompt("What would you like to name your new PolarBear Dog?")
+    naga = new Tamagotchi(name);
 
     document.getElementsByClassName('head1')[0].style.display = 'none'
     document.getElementsByClassName('head2')[0].style.display = 'none'
@@ -142,10 +153,6 @@ const playNaga = () => {
     eggImage.style.position = "absolute"
     eggImage.style.right = "260px"
     eggImage.style.bottom = "0px"
-
-    //name
-    const name = prompt("What would you like to name your new PolarBear Dog?")
-    naga = new Tamagotchi(name);
 
     var head3 = document.createElement("h3");
     document.getElementsByTagName("body")[0].appendChild(head3);
@@ -206,10 +213,18 @@ const playNaga = () => {
      //Interval scores every second
      const interval1 = setInterval(function() {
         head3.textContent = `NAME: ${naga.name} AGE: ${naga.age} HUNGER: ${naga.hunger} SLEEPINESS: ${naga.sleepiness} BOREDOM: ${naga.boredom}`
-    }, 1000);
+    }, 334);
     
-    //Interval every 5 seconds to age up
+    //Interval every X seconds to age up
     const interval2 = setInterval(function() {
         naga.ageUp();
-    }, 5000);
+
+        //Evolve if age reaches 10
+        if (naga.age >= 10) {
+            document.getElementById('nagaImage').style.display = 'block'
+            document.getElementById('egg').style.display = 'none'
+            document.getElementById('nagaImage').style.animation="runNaga 1s linear infinite"
+        }
+
+    }, 2000);
 }
